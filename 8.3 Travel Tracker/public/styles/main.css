@@ -1,0 +1,265 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  background: linear-gradient(135deg, #101522 0%, #1a2238 100%);
+  font-family: 'Orbitron', 'Roboto', 'Segoe UI', Arial, sans-serif;
+  letter-spacing: 0.03em;
+}
+
+.ag-canvas {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+
+  position: relative;
+  visibility: visible;
+
+  width: 100%;
+  height: 100%;
+  padding: 3rem 1rem;
+  opacity: 1;
+  transition: opacity 0.5s;
+
+  z-index: -1;
+  margin-top: -90px;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 170, 255, 0.04) 0px,
+    rgba(0, 170, 255, 0.04) 1px,
+    transparent 1px,
+    transparent 32px
+  ),
+  linear-gradient(135deg, #101522 0%, #1a2238 100%);
+  box-shadow: 0 0 40px 0 #00aaff33, 0 0 120px 0 #00aaff22;
+  border-radius: 24px;
+  border: 2px solid #00aaff33;
+}
+.ag-canvas_svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  margin-left: 1rem;
+}
+.ag-canvas_svg path {
+  fill: #181c24;
+  stroke: #232a3a;
+  stroke-width: 1.5;
+  filter: none;
+  transition: 0.5s, filter 0.3s;
+}
+
+/* Neon blue glow for visited countries */
+.ag-canvas_svg path.visited {
+  stroke: #00eaff;
+  stroke-width: 2.2;
+  filter:
+    drop-shadow(0 0 3px #00eaff)
+    drop-shadow(0 0 8px #00eaff)
+    drop-shadow(0 0 16px #00aaff);
+  fill: #181c24;
+  animation: neon-flicker 2.5s infinite alternate;
+}
+
+@keyframes neon-flicker {
+  0%, 100% { filter:
+    drop-shadow(0 0 3px #00eaff)
+    drop-shadow(0 0 8px #00eaff)
+    drop-shadow(0 0 16px #00aaff);
+  }
+  10% { filter:
+    drop-shadow(0 0 5px #00eaff)
+    drop-shadow(0 0 12px #00eaff)
+    drop-shadow(0 0 24px #00aaff);
+  }
+  20% { filter:
+    drop-shadow(0 0 2px #00eaff)
+    drop-shadow(0 0 6px #00eaff)
+    drop-shadow(0 0 12px #00aaff);
+  }
+  30% { filter:
+    drop-shadow(0 0 7px #00eaff)
+    drop-shadow(0 0 16px #00eaff)
+    drop-shadow(0 0 32px #00aaff);
+  }
+  50% { filter:
+    drop-shadow(0 0 3px #00eaff)
+    drop-shadow(0 0 8px #00eaff)
+    drop-shadow(0 0 16px #00aaff);
+  }
+}
+
+/* Optional: subtle hover effect */
+.ag-canvas_svg path:hover {
+  stroke: #00fff7;
+  filter:
+    drop-shadow(0 0 12px #00fff7)
+    drop-shadow(0 0 32px #00eaff);
+  z-index: 2;
+}
+
+/* Neon glow on hover/focus */
+.ag-canvas_svg path.neon-hover {
+  stroke: #00fff7 !important;
+  stroke-width: 4 !important;
+  filter:
+    drop-shadow(0 0 16px #00fff7)
+    drop-shadow(0 0 32px #00eaff)
+    drop-shadow(0 0 64px #00aaff)
+    drop-shadow(0 0 128px #00fff7);
+  outline: none;
+  z-index: 3;
+  transition: filter 0.2s, stroke 0.2s;
+}
+@media (max-width: 900px) {
+  .ag-canvas_svg path.neon-hover {
+    stroke-width: 2.5 !important;
+  }
+}
+@media (max-width: 600px) {
+  .ag-canvas_svg path.neon-hover {
+    stroke-width: 2 !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .ag-canvas {
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    height: auto;
+    padding: 4rem 1rem 1rem;
+  }
+  .ag-canvas_svg {
+    max-height: calc(100% - 6rem);
+    margin-left: 0;
+  }
+}
+
+input {
+  font-family: 'Orbitron', 'Roboto', sans-serif;
+  background: #181c24;
+  color: #00eaff;
+  border: 2px solid #00aaff99;
+  box-shadow: 0 0 8px #00aaff33;
+  border-radius: 8px;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+input:focus {
+  border: 2px solid #00fff7;
+  box-shadow: 0 0 16px #00fff799;
+  background: #232a3a;
+  color: #00fff7;
+}
+
+button {
+  font-family: 'Orbitron', 'Roboto', sans-serif;
+  text-transform: uppercase;
+  background: linear-gradient(90deg, #00aaff 0%, #00fff7 100%);
+  color: #101522;
+  border-radius: 8px;
+  box-shadow: 0 0 16px #00fff799, 0 0 32px #00aaff33;
+  border: none;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+}
+button:hover {
+  background: linear-gradient(90deg, #00fff7 0%, #00aaff 100%);
+  color: #00fff7;
+  box-shadow: 0 0 32px #00fff7cc, 0 0 64px #00aaff66;
+}
+
+.total-count {
+  font-family: 'Orbitron', 'Roboto', sans-serif;
+  color: #00fff7;
+  text-shadow: 0 0 8px #00fff7, 0 0 16px #00aaff;
+  background: rgba(16, 21, 34, 0.7);
+  border-radius: 0 12px 0 0;
+  border-left: 2px solid #00aaff99;
+  border-top: 2px solid #00aaff99;
+  box-shadow: 0 0 16px #00aaff33;
+  padding: 15px 32px;
+  left: 0;
+  bottom: 0;
+}
+
+/* Neon header styles */
+.neon-header {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto 2.5rem auto;
+  padding: 2.5rem 0 1.2rem 0;
+  background: none;
+  position: relative;
+  z-index: 10;
+}
+.neon-header h1 {
+  font-family: 'Orbitron', 'Roboto', sans-serif;
+  font-size: 2.8rem;
+  color: #00fff7;
+  letter-spacing: 0.12em;
+  text-shadow:
+    0 0 8px #00fff7,
+    0 0 24px #00aaff,
+    0 0 48px #00fff7;
+  margin: 0;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.neon-header .copyright {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1.1rem;
+  color: #00aaffcc;
+  text-shadow: 0 0 8px #00aaff, 0 0 16px #00fff7;
+  font-family: 'Orbitron', 'Roboto', sans-serif;
+  letter-spacing: 0.08em;
+}
+
+/* Country form styles */
+.country-form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-bottom: 2.5rem;
+  margin-top: 0.5rem;
+  z-index: 5;
+  position: relative;
+}
+.country-input {
+  width: 320px;
+  max-width: 90vw;
+  font-size: 1.1rem;
+  padding: 16px 18px;
+  border-radius: 10px;
+  border: 2px solid #00fff7cc;
+  background: #181c24;
+  color: #00fff7;
+  box-shadow: 0 0 16px #00fff799, 0 0 32px #00aaff33;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+.country-input:focus {
+  border: 2px solid #00aaff;
+  box-shadow: 0 0 32px #00aaffcc, 0 0 64px #00fff799;
+  background: #232a3a;
+  color: #00fff7;
+}
+
+/* Optional: import Orbitron font for a more futuristic look */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
